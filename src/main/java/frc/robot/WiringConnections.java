@@ -63,4 +63,6 @@ public final class WiringConnections {
   public static final int RIGHT_MAIN_CONTROLLER_ID = CAN_CHANNEL_1;
   public static final int RIGHT_FOLLOW_1_CONTROLLER_ID = CAN_CHANNEL_2;
   public static final int RIGHT_FOLLOW_2_CONTROLLER_ID = CAN_CHANNEL_3;
+
+  public static final int CANNON_COMPRESSOR_ID = CAN_CHANNEL_7;
 }
