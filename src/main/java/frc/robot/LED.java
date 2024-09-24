@@ -44,7 +44,7 @@ public class LED extends RoboDevice {
         m_Led.start();
         
         
-        double targetTime = 0.05;
+        double targetTime = 0.02;
         
         boolean waited = false;
          
@@ -58,7 +58,6 @@ public class LED extends RoboDevice {
 
           while (!m_timer.hasElapsed(targetTime)) {}
         }
-        m_Led.start();
 /* 
         m_LedBuffer.setRGB(0, 255, 0, 0);
         m_Led.setData(m_LedBuffer);

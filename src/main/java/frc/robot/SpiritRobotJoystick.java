@@ -149,6 +149,10 @@ public class SpiritRobotJoystick extends HuskyJoystick{
     return buttonReleaseEvent(2);
   }
 
+  public Boolean button3PressEvent(){
+    return buttonPressEvent(2);
+  }
+
   /**
    * Fires when the button 4 is released
    * @return true only once when released
@@ -157,11 +161,19 @@ public class SpiritRobotJoystick extends HuskyJoystick{
     return buttonReleaseEvent(3);
   }
 
+  public Boolean button4PressEvent(){
+    return buttonReleaseEvent(3);
+  }
+
   /**
    * Fires when the button 5 is released
    * @return true only once when released
    */
   public Boolean button5ReleaseEvent(){
+    return buttonReleaseEvent(4);
+  }
+
+  public Boolean button5PressEvent(){
     return buttonReleaseEvent(4);
   }
 
@@ -225,4 +237,8 @@ public class SpiritRobotJoystick extends HuskyJoystick{
   public Boolean button6Pushed(){
     return isButtonPushed(5);
   }
+
+  //public Boolean button11PressEvent(){
+    //return isButtonPushed(10);
+ // }
 }

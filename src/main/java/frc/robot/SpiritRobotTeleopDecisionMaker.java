@@ -12,7 +12,8 @@ public class SpiritRobotTeleopDecisionMaker {
   private Gyro m_TheGyro = new Gyro();
   //private Arm m_Arm = new Arm();
   private LED m_led = new LED();
-
+  private CannonCompressor m_CannonCompressor = new CannonCompressor();
+  private CannonMotor m_CannonMotor = new CannonMotor();
 
 
   SpiritRobotTeleopDecisionMaker(){
@@ -29,6 +30,26 @@ public class SpiritRobotTeleopDecisionMaker {
       m_led.Shine();
     }
 
+    if (m_TheJoystick.button3PressEvent()) {
+      m_CannonCompressor.compress();
+    }
+
+    if (m_TheJoystick.button4PressEvent()) {
+      m_CannonCompressor.stopCompress();
+    }
+
+    if(m_TheJoystick.button5Pushed()) {
+      m_CannonMotor.open();
+    }
+
+    if(m_TheJoystick.button5ReleaseEvent()){
+      m_CannonMotor.stop();
+    }
+
+    //if(m_TheJoystick.button11PressEvent()){
+     // m_CannonMotor.stop();
+    //}
+
     // System.out.println("-- F/B: " + m_TheJoystick.getForwardBackwardValue() + 
     //                    "   S/S: " + m_TheJoystick.getSideToSideValue() + 
     //                    "   Rot: " + m_TheJoystick.getTwistValue());
@@ -44,9 +65,6 @@ public class SpiritRobotTeleopDecisionMaker {
       //System.out.println(m_TheWeaponsJoystick.getForwardBackwardValue());
       //m_Arm.moveArm(-m_TheWeaponsJoystick.getForwardBackwardValue());
   
-      if (m_TheJoystick.button5ReleaseEvent()){
-        //m_TheCompressor.toggleCompressor();
-      }
 
       //System.out.println(m_ChassisEncoders.GetLeftDegreesEncoderValue());
      // System.out.println(m_TheGyro.getHeading());
