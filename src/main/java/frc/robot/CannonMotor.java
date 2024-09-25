@@ -22,7 +22,7 @@ public class CannonMotor extends RoboDevice {
 
       public void open(){
         
-        m_controller.set(ControlMode.PercentOutput, 0.1);
+        m_controller.set(ControlMode.PercentOutput, 1);
 
       }
 
