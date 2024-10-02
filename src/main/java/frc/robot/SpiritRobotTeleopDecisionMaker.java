@@ -1,5 +1,8 @@
 package frc.robot;
 
+import edu.wpi.first.cameraserver.CameraServer;
+import edu.wpi.first.cscore.UsbCamera;
+
 public class SpiritRobotTeleopDecisionMaker {
   private SpiritRobotJoystick m_TheJoystick = new SpiritRobotJoystick();
   private WeaponsJoystick m_TheWeaponsJoystick = new WeaponsJoystick();
@@ -22,12 +25,15 @@ public class SpiritRobotTeleopDecisionMaker {
 
   public void initialize(){
     System.out.println("Initializing...");
+
+    UsbCamera m_camera = CameraServer.startAutomaticCapture(0);
+    m_camera.setResolution(640, 480);
   }
 
   public void doDecisions(){
 
     if (m_TheJoystick.button6PressEvent()) {
-      m_led.Shine();
+      m_led.fireSequence();
     }
 
     if (m_TheJoystick.button3PressEvent()) {
@@ -38,24 +44,28 @@ public class SpiritRobotTeleopDecisionMaker {
       m_CannonCompressor.stopCompress();
     }
 
-    if(m_TheJoystick.button5Pushed()) {
-      m_CannonMotor.open();
-    }
 
-    if(m_TheJoystick.button5ReleaseEvent()){
+
+/* 
+    if(m_TheJoystick.button5PressEvent()){
       m_CannonMotor.stop();
     }
+*/
 
-    //if(m_TheJoystick.button11PressEvent()){
-     // m_CannonMotor.stop();
-    //}
+    if (m_TheJoystick.button5PressEvent()) {
+      m_led.setReadyToFire();
+    }
+
+    if (m_TheJoystick.button7PressEvent()) {
+      m_led.Shine();
+    }
 
     // System.out.println("-- F/B: " + m_TheJoystick.getForwardBackwardValue() + 
     //                    "   S/S: " + m_TheJoystick.getSideToSideValue() + 
     //                    "   Rot: " + m_TheJoystick.getTwistValue());
 
       m_Chassis.setTargForwardBack(m_TheJoystick.getForwardBackwardValue());
-      m_Chassis.setTargRotation(m_TheJoystick.getTwistValue() / 4);
+      m_Chassis.setTargRotation(m_TheJoystick.getTwistValue());
 
       if (m_TheJoystick.triggerReleaseEvent()){
         m_TheShifter.toggleGear();

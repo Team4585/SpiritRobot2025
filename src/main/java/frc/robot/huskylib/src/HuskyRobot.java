@@ -1,8 +1,13 @@
 package frc.robot.huskylib.src;
 
+import edu.wpi.first.cameraserver.CameraServer;
+import edu.wpi.first.cameraserver.CameraServerShared;
+import edu.wpi.first.cscore.CameraServerJNI;
 import edu.wpi.first.wpilibj.TimedRobot;
 
 public abstract class HuskyRobot extends TimedRobot {
+
+  CameraServer m_CameraServer;
   /**
    * This function is run when the robot is first started up and should be used for any
    * initialization code.

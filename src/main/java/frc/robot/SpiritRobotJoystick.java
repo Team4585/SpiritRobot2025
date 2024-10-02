@@ -194,8 +194,8 @@ public class SpiritRobotJoystick extends HuskyJoystick{
    * Fires when the button 7 is released
    * @return true only once when release
    */
-  public Boolean button7ReleaseEvent(){
-    return buttonReleaseEvent(6);
+  public Boolean button7PressEvent(){
+    return buttonPressEvent(6);
   }
   
   /**
