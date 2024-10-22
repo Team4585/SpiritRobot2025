@@ -33,7 +33,7 @@ public class LED extends RoboDevice {
       }
 
       
-      public void setReadyToFire(){
+      public void safetyOff(){
         readyToFire = true;
       }
 

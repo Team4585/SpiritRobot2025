@@ -27,7 +27,7 @@ public class SpiritRobotTeleopDecisionMaker {
     System.out.println("Initializing...");
 
     UsbCamera m_camera = CameraServer.startAutomaticCapture(0);
-    m_camera.setResolution(640, 480);
+    m_camera.setResolution(426, 240);
   }
 
   public void doDecisions(){
@@ -53,7 +53,7 @@ public class SpiritRobotTeleopDecisionMaker {
 */
 
     if (m_TheJoystick.button5PressEvent()) {
-      m_led.setReadyToFire();
+      m_led.safetyOff();
     }
 
     if (m_TheJoystick.button7PressEvent()) {
