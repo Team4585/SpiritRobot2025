@@ -11,6 +11,9 @@ public class WestCoastDriveTrain extends RoboDevice{
   private double m_currentSpeed = 0.0;
   private double m_currentRotationSpeed = 0.0;
 
+  private int m_steeringPow = 3;
+  private double m_steeringEngagePoint = .5;
+
   private VictorSPX m_leftMasterController;
   private VictorSPX m_leftSlave1Controller;
   private VictorSPX m_leftSlave2Controller;
@@ -43,7 +46,15 @@ public class WestCoastDriveTrain extends RoboDevice{
   }
 
   public void setTargRotationSpeed(double targRotationSpeed){
-    m_targRotationSpeed = targRotationSpeed;
+    if (targRotationSpeed != 0) {
+      if (targRotationSpeed > 0) { 
+        m_targRotationSpeed = Math.pow(targRotationSpeed, m_steeringPow) + m_steeringEngagePoint;
+      }else{
+        m_targRotationSpeed = Math.pow(targRotationSpeed, m_steeringPow) - m_steeringEngagePoint;
+      }
+    }else{
+      m_targRotationSpeed = 0;
+    }
   }
 
   public double getTargSpeed(){
